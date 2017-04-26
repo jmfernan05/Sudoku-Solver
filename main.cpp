@@ -79,8 +79,6 @@ bool Sudoku:: SolvePuzzle (int grid [N][N]){
     return false;
 }
 
-
-
 //Function to print the grid
 void Sudoku:: PrintGrid(int grid[N][N])
 {
@@ -90,6 +88,26 @@ void Sudoku:: PrintGrid(int grid[N][N])
             printf("%d", grid[row][col]);
         printf("\n");
     }
+}
+
+//Function to read the file
+void ReadFile(string filename, int grid[N][N])
+{
+    int i,j;
+    ifstream inFile;
+    inFile.open("samplesudoku1.txt");
+    
+    if(!inFile)
+    {
+        cout<<"cannot open file.\n";
+    }
+    
+    for (i=0, i<9, i++){
+        for(j=0,j<9,j++){
+            inFile>>grid[i][j];
+        }
+    }
+    inFile.close();
 }
 
 
