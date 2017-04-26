@@ -21,7 +21,7 @@ private:
     bool checkCol (int grid[N][N], int col, int num); //Checks the column
     bool checkBox (int grid[N][N], int startRow, int startCol, int num); //Checks each box
     void PrintGrid(int grid [N][N]);
-    //void ReadFilstd::stringng filename0);
+    void ReadFile (string inFile, int grid[N][N]);
     bool IsSafe(int grid [N][N], int&row, int&col, int num);
     bool FindUnassignedLocation (int grid [N][N], int &row, int&col);
     bool SolvePuzzle (int grid [N][N]);
