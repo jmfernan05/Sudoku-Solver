@@ -9,7 +9,6 @@ bool Sudoku::checkRow(int grid[N][N], int row, int num)
 	for (int col = 0; col < N; col++)
 		if (grid[row][col] == num)
 			return true;
-			cout << "check" << endl;
 	return false;
 }
 
@@ -65,28 +64,53 @@ bool Sudoku::SolvePuzzle(int grid[N][N]) {
 
 			if (SolvePuzzle(grid)) //return if success
 				return true;
-
-			grid[row][col] = UNASSIGNED; //try again
+			else
+				grid[row][col] = UNASSIGNED; //try again
 
 		}
 	}
 	return false;
 }
 
-//Function to print the grid
-void Sudoku::PrintGrid(int grid[N][N])
+void Sudoku::DisplayPuzzle(int grid[N][N])
 {
-	for (int row = 0; row < N; row++)
+	for (int x = 0; x < 9; x++)
 	{
-		for (int col = 0; col < N; col++)
+		cout << endl;
+		for (int y = 0; y < 9; y++)
 		{
-			printf("%d", grid[row][col]);
-			printf("\n");
+			if (grid[x][y] == 0)
+				cout << (char)grid[x][y];
+			else
+				cout << grid[x][y];
+			cout << "|";
 		}
 	}
+	cout << endl;
 }
 
+void Sudoku::ReadFile(string filename, int grid[N][N])
+{
+	int i, j;
+	ifstream inFile;
+	inFile.open(filename);
 
+	if (inFile.fail())
+	{
+		cout << "cannot open file" << endl;
+		exit(1);
+	}
+
+	if (inFile.is_open())
+	{
+		for (i = 0; i < 9; i++) {
+			for (j = 0; j < 9; j++) {
+				inFile >> grid[i][j];
+			}
+		}
+		inFile.close();
+	}
+}
 
 
 //Function to read the file
@@ -97,12 +121,13 @@ void Sudoku::PrintGrid(int grid[N][N])
 
 Sudoku::Sudoku() {
 	int grid[N][N];
-	for (int i = 0; i<N; i++) {
-		for (int j = 0; j<N; j++) {
-			cin >> grid[i][j];
-		}
-	}
-
+	string filename = "samplesudoku1.txt";
+	ReadFile(filename, grid);
+	DisplayPuzzle(grid);
+	if (SolvePuzzle(grid) == true)
+		DisplayPuzzle(grid);
+	else
+		printf("No solution exists");
 
 
 }

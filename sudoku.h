@@ -14,7 +14,8 @@ public:
 	bool checkCol(int grid[N][N], int col, int num); //Checks the column
 	bool checkBox(int grid[N][N], int startRow, int startCol, int num); //Checks each box
 	void PrintGrid(int grid[N][N]);
-	//void ReadFile(string filename, int grid[N][N]);
+	void DisplayPuzzle(int grid[N][N]);
+	void ReadFile(std::string filename, int grid[N][N]);
 	bool IsSafe(int grid[N][N], int&row, int&col, int num);
 	bool FindUnassignedLocation(int grid[N][N], int &row, int&col);
 	bool SolvePuzzle(int grid[N][N]);
