@@ -80,7 +80,7 @@ void Sudoku::DisplayPuzzle(int grid[N][N])
 		cout << endl;
 		for (int y = 0; y < 9; y++) //Column
 		{
-			if (grid[x][y] == 0)
+			if (grid[x][y] == UNASSIGNED)
 				cout << (char)grid[x][y]; //Replace 0 with blank in the displayed puzzle
 			else
 				cout << grid[x][y];
