@@ -72,15 +72,16 @@ bool Sudoku::SolvePuzzle(int grid[N][N]) {
 	return false;
 }
 
+//Display the puzzle and replace 0 value with blank character
 void Sudoku::DisplayPuzzle(int grid[N][N])
 {
-	for (int x = 0; x < 9; x++)
+	for (int x = 0; x < 9; x++) //Row
 	{
 		cout << endl;
-		for (int y = 0; y < 9; y++)
+		for (int y = 0; y < 9; y++) //Column
 		{
 			if (grid[x][y] == 0)
-				cout << (char)grid[x][y];
+				cout << (char)grid[x][y]; //Replace 0 with blank in the displayed puzzle
 			else
 				cout << grid[x][y];
 			cout << "|";
@@ -89,6 +90,7 @@ void Sudoku::DisplayPuzzle(int grid[N][N])
 	cout << endl;
 }
 
+//Read the text file line by line and input the file into the grid
 void Sudoku::ReadFile(string filename, int grid[N][N])
 {
 	int i, j;
@@ -105,7 +107,7 @@ void Sudoku::ReadFile(string filename, int grid[N][N])
 	{
 		for (i = 0; i < 9; i++) {
 			for (j = 0; j < 9; j++) {
-				inFile >> grid[i][j];
+				inFile >> grid[i][j]; //Input the file into the grid
 			}
 		}
 		inFile.close();
@@ -121,7 +123,10 @@ void Sudoku::ReadFile(string filename, int grid[N][N])
 
 Sudoku::Sudoku() {
 	int grid[N][N];
-	string filename = "samplesudoku1.txt";
+	string filename;
+	cout << "Please enter the file name:\n>"; //Ask for user input on the text filename
+	cin >> filename;
+	filename += ".txt"; //Eliminate the need to type the .txt
 	ReadFile(filename, grid);
 	DisplayPuzzle(grid);
 	if (SolvePuzzle(grid) == true)
