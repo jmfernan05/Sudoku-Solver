@@ -8,6 +8,12 @@ using namespace std;
 
 int main()
 {
-	Sudoku problem;
+	char rerun; //Set up rerun for the program
+	do
+	{
+		Sudoku problem;
+		cout << "Would you like to solve another puzzle? If yes, type y. Otherwise, enter any other letter: ";
+		cin >> rerun;
+	} while (rerun == 'y');
 	return 0;
 }
