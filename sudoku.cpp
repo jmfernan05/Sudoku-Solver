@@ -115,13 +115,8 @@ void Sudoku::ReadFile(string filename, int grid[N][N])
 }
 
 
-//Function to read the file
-//void ReadFile(string filename, int grid[N][N])
-
-
-
-
 Sudoku::Sudoku() {
+	cout << "Group Project-Sudoku Solver.\n>";
 	int grid[N][N];
 	string filename;
 	cout << "Please enter the file name:\n>"; //Ask for user input on the text filename
